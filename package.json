@@ -1,0 +1,25 @@
+{
+  "name": "temblador",
+  "version": "0.0.1",
+  "description": "Retail website for Ralph Temblador",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonedev/temblador.git"
+  },
+  "author": "antone.dev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antonedev/temblador/issues"
+  },
+  "homepage": "https://github.com/antonedev/temblador#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.11",
+    "pug": "^3.0.0"
+  }
+}

@@ -1,0 +1,148 @@
+:root {
+  --dodgerBlue: #005a9c;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  font-size: 1rem;
+}
+
+page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--dodgerBlue);
+  padding: 0 3vmin;
+}
+
+logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5vmin;
+}
+
+logo img {
+  width: 89%;
+}
+
+company {
+  margin-top: -8vmin;
+  background-color: black;
+  border-radius: 3px;
+  color: rgba(255, 255, 255, 0.25);
+  text-shadow: 0 0 var(--dodgerBlue);
+  padding: 1vmin 2vmin;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3vmin;
+}
+
+nav a {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: white;
+  text-decoration: none;
+  padding: 1vmin 2vmin;
+  margin-top: 1vmin;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: black;
+}
+
+content {
+  overflow: auto;
+}
+
+main {
+  padding: 13vmin 8vmin 3vmin 8vmin;
+}
+
+main div {
+  padding-top: 3vmin;
+}
+
+main h2 {
+  font-size: 3.4rem;
+}
+
+main h3 {
+  font-size: 2.3rem;
+  color: var(--dodgerBlue);
+  padding-bottom: 2vmin;
+}
+
+#about img {
+  width: 100%;
+  height: 21vmin;
+  object-fit: cover;
+  padding-top: 1vmin;
+}
+
+#about div {
+  display: flex;
+  justify-content: space-around;
+}
+
+#about div figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid var(--dodgerBlue);
+  padding: 2vmin;
+  margin: 1vmin;
+  width: 30%;
+}
+
+figcaption {
+  font-size: 0.89rem;
+  padding-top: 1vmin;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 2vmin;
+  border: 2px solid var(--dodgerBlue);
+  flex-wrap: wrap;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+}
+
+footer div {
+  padding: 15px 15px;
+}
+
+.spacer {
+  margin-top: 1vmin;
+}

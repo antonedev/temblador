@@ -1,0 +1,6 @@
+/node_modules
+/public/img
+/config
+
+package-lock.json
+todo
