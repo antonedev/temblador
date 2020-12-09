@@ -75,7 +75,7 @@ content {
 }
 
 main {
-  padding: 13vmin 8vmin 3vmin 8vmin;
+  padding: 8% 5% 1% 5%;
 }
 
 main h2 {
@@ -85,7 +85,19 @@ main h2 {
 main h3 {
   font-size: 3rem;
   color: var(--dodgerBlue);
-  margin: 2% 0;
+  margin: 3% 0;
+  position: relative;
+}
+
+main h3:after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 34%;
+  background-color: var(--lightDodgerBlue);
+  bottom: 0.21rem;
+  left: 0px;
+  z-index: -1;
 }
 
 #gallery div {

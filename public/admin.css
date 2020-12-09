@@ -3,19 +3,13 @@ body {
   color: white;
   display: grid;
   grid-template-areas:
-    "gf gf gl"
-    "gf gf gl";
-  grid-template-columns: 1fr 1fr 1fr;
+    "gf gl"
+    "sf sl";
+  grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr 1fr;
 }
 
-[type="text"],
-textarea {
-  background-color: darkslateblue;
-  color: white;
-}
-
-fieldset,
+form,
 label {
   display: flex;
   flex-direction: column;
@@ -27,6 +21,7 @@ label {
 
 #gallery-list {
   grid-area: gl;
+  border: 3px dotted white;
 }
 
 #gallery-list img {
@@ -39,4 +34,13 @@ label {
 
 #gallery-list div div {
   flex-direction: column;
+}
+
+#store-form {
+  grid-area: sf;
+}
+
+#store-list {
+  grid-area: sl;
+  border: 3px dotted white;
 }
