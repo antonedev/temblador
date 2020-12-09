@@ -1,0 +1,42 @@
+body {
+  background-color: darkslategray;
+  color: white;
+  display: grid;
+  grid-template-areas:
+    "gf gf gl"
+    "gf gf gl";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+[type="text"],
+textarea {
+  background-color: darkslateblue;
+  color: white;
+}
+
+fieldset,
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+#gallery-form {
+  grid-area: gf;
+}
+
+#gallery-list {
+  grid-area: gl;
+}
+
+#gallery-list img {
+  width: 100px;
+}
+
+#gallery-list div {
+  display: flex;
+}
+
+#gallery-list div div {
+  flex-direction: column;
+}

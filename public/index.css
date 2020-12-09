@@ -1,5 +1,6 @@
 :root {
   --dodgerBlue: #005a9c;
+  --lightDodgerBlue: #4083b5;
 }
 
 * {
@@ -25,14 +26,14 @@ sidebar {
   display: flex;
   flex-direction: column;
   background-color: var(--dodgerBlue);
-  padding: 0 3vmin;
+  padding: 0 3%;
 }
 
 logo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5vmin;
+  margin-top: 13%;
 }
 
 logo img {
@@ -43,8 +44,7 @@ company {
   margin-top: -8vmin;
   background-color: black;
   border-radius: 3px;
-  color: rgba(255, 255, 255, 0.25);
-  text-shadow: 0 0 var(--dodgerBlue);
+  color: var(--lightDodgerBlue);
   padding: 1vmin 2vmin;
   font-weight: bold;
   font-size: 2rem;
@@ -71,53 +71,60 @@ nav a:hover {
 }
 
 content {
-  overflow: auto;
+  overflow-y: auto;
 }
 
 main {
   padding: 13vmin 8vmin 3vmin 8vmin;
 }
 
-main div {
-  padding-top: 3vmin;
-}
-
 main h2 {
-  font-size: 3.4rem;
+  font-size: 4rem;
 }
 
 main h3 {
-  font-size: 2.3rem;
+  font-size: 3rem;
   color: var(--dodgerBlue);
-  padding-bottom: 2vmin;
+  margin: 2% 0;
+}
+
+#gallery div {
+  display: flex;
+}
+
+#gallery img {
+  width: 30%;
+  padding: 2%;
+  object-fit: cover;
 }
 
 #about img {
   width: 100%;
   height: 21vmin;
   object-fit: cover;
-  padding-top: 1vmin;
+  padding-top: 1%;
 }
 
 #about div {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 #about div figure {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  border: 2px solid var(--dodgerBlue);
-  padding: 2vmin;
+  background-color: aliceblue;
   margin: 1vmin;
   width: 30%;
 }
 
+#about div figure p {
+  padding: 3%;
+}
+
 figcaption {
   font-size: 0.89rem;
-  padding-top: 1vmin;
 }
 
 form {

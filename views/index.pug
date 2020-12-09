@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="index.css")
+    title Temblador - Pyrography & Woodworking
+  body
+    page
+      sidebar
+        logo
+          img(src="img/pyro-logo.svg" alt="Temblador Pyrography Logo")
+          company TEMBLADOR
+        nav
+          a(href="#store") STORE
+          a(href="#gallery") GALLERY
+          a(href="#services") SERVICES
+          a(href="#about") ABOUT
+          a(href="#order") ORDER
+      content
+        main
+          h2 Pyrography & Woodworking
+          #store
+            h3 Store
+            p Purchase pre-made artwork and woodworking products
+            #store-root
+          #gallery
+            h3 Gallery
+            div
+              if allArt
+                each art in allArt
+                  img(src="/img/uploads/" + art.filename, alt=art.caption)
+          #services
+            h3 Services
+            p On-base percentage leadoff swing cellar warning track bandbox save stance. Bush league home cup of coffee pinch runner ground rule double blue practice bunt. Knuckle pennant outfield practice appeal, appeal batter's box loogy relief pitcher. Take practice baseball card rope skipper outside outfield. Stadium second base assist pinch runner hitter streak relief pitcher shortstop left fielder. Season friendly confines petey ground ball appeal season baseball.
+            p.spacer Wild pitch at-bat grounder backstop balk, rope loogy mustard game. Gapper in the hole backstop grass reds blue fair small ball pinch runner. Sacrifice pennant baseball alley red sox outfield swing. Sacrifice bunt cardinals cup of coffee play knuckleball bat rainout bench. Off-speed batting average reds grand slam mound loss bleeder. Double switch knuckleball diamond balk grounder pitchout good eye shift.
+          #about
+            h3 About
+            div
+              figure
+                p Ralph Temblador is a Disabled American Veteran who, while serving in the United States Army, was deployed in support of Operation Desert Shield, Desert Falcon, and Southern Watch.
+                figcaption PFC Temblador with fellow soldiers
+                img(src="img/author2.webp")
+              figure
+                p He's earned an A.A. in Multimedia and Broadcast Production, and a B.A. in Visual Effects and Motion Graphics. Ralph's love for art has spilled into to teaching the developmentally disabled as well.
+                figcaption Ralph smiling in a wheelchar at a museum
+                img(src="img/author1.webp")
+              figure
+                p In 2017, after a decade of symptoms, Ralph was diagnosed with Hereditary Spastic Paraplegia. Since then he has found pyrography and woodworking to be a great source of therapy.
+                figcaption Ralph practicing pyrography outside in AZ
+                img(src="img/author3.webp")
+          #ordering
+            h3 Order
+            p Commision an original piece of pyrographic art or order custom wood products.
+            form(action="/order" method="post")
+              label Name
+                input(type="text" name="name" required)
+              label Email
+                input(type="email" name="email" required)
+              label Product
+                select(name="product" required)
+                  option(value="Bad antone, it's broken" selected disabled hidden) Select Product
+                  option(value="large") Large wood art
+                  option(value="medium") Medium wood art
+                  option(value="small") Small wood art
+                  option(value="coasters") Wood drink coasters
+                  option(value="other") Other - please describe below
+              label Upload a file
+                input(type="file" name="file")
+              label Additional details
+                textarea(name="details" cols="20" rows="5")
+              div
+                input(type="reset")
+                input(type="submit" disabled)
+        footer
+          #copy
+            p &#169; 2020 Ralph Temblador
+          #author
+            p Website by 
+              a(href="https://antone.dev") antone.dev

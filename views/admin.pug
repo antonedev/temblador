@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="admin.css")
+    title Temblador - Admin Panel
+  body
+    form#gallery-form(action="/admin/addArt" method="post" enctype="multipart/form-data")
+      fieldset
+        legend New Gallery Art
+        label Upload an image
+          input(type="file" name="uploadedFile" required)
+        label Title
+          input(type="text" name="title" required)
+        label Caption
+          textarea(name="caption" cols="30" rows="10")
+        input(type="reset" value="Reset")
+        input(type="submit" value="Submit")
+    #gallery-list
+      if allArt
+        each art in allArt
+          div
+            img(src="img/uploads/" + art.filename)
+            div
+              .title= "Title: " + art.title
+              .filename= "File name: " + art.filename
+              .filesize= "File size: " + art.filesize
+              .caption= "Caption: " + art.caption
+              form(action="/admin/deleteArt" method="post")
+                input(type="hidden" name="id" value=art._id)
+                input(type="submit" value="Delete")
