@@ -17,10 +17,6 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/store", (req, res) => {
-  res.render("store", { inventory: 0 });
-});
-
 router.get("/admin", (req, res) => {
   Art.find({}, (err, allArt) => {
     if (err) res.json(err);
@@ -66,6 +62,19 @@ router.post("/admin/addArt", (req, res) => {
         caption: fields.caption || "",
       });
       newArt.save((err, ignore) => {
+        if (err) res.json(err);
+        else res.redirect("/admin");
+      });
+    }
+  });
+});
+
+router.post("/admin/deleteProduct", (req, res) => {
+  const form = formidable();
+  form.parse(req, (err, fields, files) => {
+    if (err) res.json(err);
+    else {
+      Product.deleteOne({ _id: fields.id }, (err, ignore) => {
         if (err) res.json(err);
         else res.redirect("/admin");
       });
