@@ -5,7 +5,7 @@ const artSchema = new Mongoose.Schema({
   filename: { type: String, required: true },
   filesize: { type: Number, required: true },
   type: { type: String, required: true },
-  altText: { type: String, required: false },
+  altText: { type: String, required: true },
 });
 
 const Art = Mongoose.model("Art", artSchema);
