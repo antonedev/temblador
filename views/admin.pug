@@ -6,15 +6,48 @@ html(lang="en")
     link(rel="stylesheet" href="admin.css")
     title Temblador - Admin Panel
   body
-    form#gallery-form(action="/admin/addArt" method="post" enctype="multipart/form-data")
-      label Upload an image
-        input(type="file" name="uploadedFile" required)
-      label Title
-        input(type="text" name="title" required)
-      label Alternate Text (for accessability)
-        input(type="text" name="altText" required)
-      input(type="reset" value="Reset")
-      input(type="submit" value="Submit")
+    div#store-form Add a product to the Store
+      form(action="/admin/addProduct" method="post" enctype="multipart/form-data")
+        label Product Name
+          input(type="text" name="name" required)
+        label Price (As pennies $12.51 -> 1251)
+          input(type="number" name="price" placeholder="3998" required)
+        label Product Description
+          input(type="text" name="description" required)
+        label.upload Upload an image
+          input(type="file" name="uploadedFile" required)
+        label Alternate Text (image description for accessibility)
+          input(type="text" name="altText" required)
+        .buttons
+          input(type="reset" value="Reset")
+          input(type="submit" value="Submit")
+    #store-list
+      if allProducts
+        each product in allProducts
+          div
+            img(src="img/uploads/" + product.filename width="200px" height="200px" style="object-fit:cover;")
+            div
+              div= "Name: " + product.name
+              div= "Price: " + product.price
+              div= "Description: " + product.description
+              div= "Image filename: " + product.filename
+              div= "Image filesize: " + product.filesize
+              form.delete(action="/admin/deleteProduct" method="post")
+                input(type="hidden" name="id" value=product._id)
+                input(type="submit" value="Delete")
+      else
+        p No Products
+    div#gallery-form Add an image to the Gallery
+      form(action="/admin/addArt" method="post" enctype="multipart/form-data")
+        label Title
+          input(type="text" name="title" required)
+        label.upload Upload an image
+          input(type="file" name="uploadedFile" required)
+        label Alternate Text
+          input(type="text" name="altText" required)
+        .buttons
+          input(type="reset" value="Reset")
+          input(type="submit" value="Submit")
     #gallery-list
       if allArt
         each art in allArt
@@ -30,32 +63,3 @@ html(lang="en")
                 input(type="submit" value="Delete")
       else
         p No Art
-    form#store-form(action="/admin/addProduct" method="post" enctype="multipart/form-data")
-      label Upload an image
-        input(type="file" name="uploadedFile" required)
-      label Alternate Text (for accessibility)
-        input(type="text" name="altText" required)
-      label Product Name
-        input(type="text" name="name" required)
-      label Price (As pennies $12.51 -> 1251)
-        input(type="number" name="price" placeholder="3998" required)
-      label Product Description
-        input(type="text" name="description" required)
-      input(type="reset" value="Reset")
-      input(type="submit" value="Submit")
-    #store-list
-      if allProducts
-        each product in allProducts
-          div
-            img(src="img/uploads/" + product.filename width="200px" height="200px" style="object-fit:cover;")
-            div
-              div= "Name: " + product.name
-              div= "Price: " + product.price
-              div= "Description: " + product.description
-              div= "Image filename: " + product.filename
-              div= "Image filesize: " + product.filesize
-              form(action="/admin/deleteProduct" method="post")
-                input(type="hidden" name="id" value=product._id)
-                input(type="submit" value="Delete")
-      else
-        p No Products
