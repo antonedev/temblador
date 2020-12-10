@@ -22,8 +22,15 @@ html(lang="en")
           h2 Pyrography & Woodworking
           #store
             h3 Store
-            p Purchase pre-made artwork and woodworking products
-            #store-root
+            div
+              if allProducts
+                each product in allProducts
+                  div
+                    img(src="/img/uploads/" + product.filename alt=product.altText)
+                    div
+                      div=product.name
+                      div=product.price
+                    p=product.description
           #gallery
             h3 Gallery
             div
