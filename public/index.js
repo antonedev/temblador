@@ -1,3 +1,7 @@
-var galleryDiv = document.getElementById("gallery-root");
+var modal = document.getElementById("modal");
+var img = document.getElementById("modal-img");
 
-galleryDiv.innerText = "Hello from index.js";
+function openGallery(element) {
+  img.src = element.src;
+  modal.style.display = "flex";
+}

@@ -1,3 +1,4 @@
+const fs = require("fs");
 const Product = require("../models/StoreProduct");
 
 exports.getAllProducts = (callback) => {
@@ -12,6 +13,12 @@ exports.getSomeProducts = (amount, callback) => {
     .exec((err, result) => {
       callback(err, result);
     });
+};
+
+exports.getProductById = (id, callback) => {
+  Product.findOne({ _id: id }, (err, result) => {
+    callback(err, result);
+  });
 };
 
 exports.removeProductBy_id = (_id, callback) => {
@@ -31,7 +38,7 @@ exports.addProduct = (
   type,
   callback
 ) => {
-  fs.copyFile(path, "./public/img/uploads" + filename, (err) => {
+  fs.copyFile(path, "./public/img/uploads/" + filename, (err) => {
     if (err) callback(err, null);
   });
   const newProduct = new Product({

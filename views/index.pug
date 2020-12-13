@@ -4,6 +4,7 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet" href="index.css")
+    script(src="index.js" defer)
     title Temblador - Pyrography & Woodworking
   body
     page
@@ -23,9 +24,9 @@ html(lang="en")
           #store
             h3 Store
             div
-              if allProducts
-                each product in allProducts
-                  div
+              if products
+                each product in products
+                  a(href="/product/" + product._id)
                     img(src="/img/uploads/" + product.filename alt=product.altText)
                     div
                       div=product.name
@@ -36,9 +37,12 @@ html(lang="en")
           #gallery
             h3 Gallery
             div
-              if allArt
-                each art in allArt
-                  img(src="/img/uploads/" + art.filename, alt=art.caption)
+              if art
+                each arte in art
+                  img(src="/img/uploads/" + arte.filename, alt=arte.caption onclick="openGallery(this)")
+          #modal(onclick="this.style.display='none'")
+            span &times;
+            img#modal-img
           #services
             h3 Services
             p On-base percentage leadoff swing cellar warning track bandbox save stance. Bush league home cup of coffee pinch runner ground rule double blue practice bunt. Knuckle pennant outfield practice appeal, appeal batter's box loogy relief pitcher. Take practice baseball card rope skipper outside outfield. Stadium second base assist pinch runner hitter streak relief pitcher shortstop left fielder. Season friendly confines petey ground ball appeal season baseball.
@@ -58,6 +62,7 @@ html(lang="en")
                 p In 2017, after a decade of symptoms, Ralph was diagnosed with Hereditary Spastic Paraplegia. Since then he has found pyrography and woodworking to be a great source of therapy.
                 figcaption Ralph practicing pyrography outside in AZ
                 img(src="img/author3.webp")
+            iframe(width="560" height="315" src="https://www.youtube-nocookie.com/embed/QfKILInWy_c" frameborder="0")
           #ordering
             h3 Order
             p Commision an original piece of pyrographic art or order custom wood products.

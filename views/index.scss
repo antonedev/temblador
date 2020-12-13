@@ -96,7 +96,7 @@ main h3:after {
   width: 34%;
   background-color: var(--lightDodgerBlue);
   bottom: 0.21rem;
-  left: 0px;
+  left: 0;
   z-index: -1;
 }
 
@@ -113,6 +113,34 @@ main h3:after {
   width: 30%;
   padding: 2%;
   object-fit: cover;
+}
+
+#modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 13;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  transition: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  background-color: rgba(1, 1, 1, 0.6);
+
+  span {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    position: fixed;
+    top: 21px;
+    right: 34px;
+  }
+
+  #modal-img {
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+  }
 }
 
 #about img {

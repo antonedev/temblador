@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="index.css")
+    script(src="https://js.stripe.com/v3/")
+    title= product.name + "Temblador - Pyrography & Woodworking"
+  body
+    page
+      header
+        h2 TEMBLADOR
+      nav
+        a(href="/") BACK
+      main
+        h1=product.name
+        img(src="/img/uploads/" + product.filename alt= product.altText)
+        h3="$" + product.price/100
+        p=product.description
+        button#checkout-button

@@ -1,3 +1,4 @@
+const fs = require("fs");
 const Art = require("../models/GalleryArt");
 
 exports.getAllArt = (callback) => {
@@ -21,7 +22,7 @@ exports.removeArtBy_id = (_id, callback) => {
 };
 
 exports.addArt = (path, filename, title, altText, filesize, type, callback) => {
-  fs.copyFile(path, "./public/img/uploads" + filename, (err) => {
+  fs.copyFile(path, "./public/img/uploads/" + filename, (err) => {
     if (err) callback(err, null);
   });
   const newArt = new Art({

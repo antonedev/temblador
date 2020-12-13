@@ -4,6 +4,9 @@ const formidable = require("formidable");
 const router = express.Router();
 const Store = require("../services/store");
 const Gallery = require("../services/gallery");
+const stripe = require("stripe")(
+  "sk_test_51HwgrHGcp6Uuydzak0PD5K6LGxtCGeY3CmMtiP2EdDyo24e3bFApS8NGM4GWXFJjT5HdWBV9rZU3XCc1DZz2GYud00wf6M5FB1"
+);
 
 router.get("/", (req, res) => {
   Gallery.getSomeArt(6, (err, art) => {
@@ -13,6 +16,13 @@ router.get("/", (req, res) => {
         if (err) res.json(err);
         else res.render("index", { art, products });
       });
+  });
+});
+
+router.get("/product/:id", (req, res) => {
+  Store.getProductById(req.params.id, (err, product) => {
+    if (err) res.json(err);
+    else res.render("product", { product });
   });
 });
 
@@ -66,7 +76,7 @@ router.post("/admin/deleteProduct", (req, res) => {
   form.parse(req, (err, fields, files) => {
     if (err) res.json(err);
     else {
-      Store.removeArtBy_id({ _id: fields.id }, (err, ignore) => {
+      Store.removeProductBy_id({ _id: fields.id }, (err, ignore) => {
         if (err) res.json(err);
         else res.redirect("/admin");
       });

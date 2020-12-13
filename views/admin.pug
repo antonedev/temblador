@@ -6,60 +6,98 @@ html(lang="en")
     link(rel="stylesheet" href="admin.css")
     title Temblador - Admin Panel
   body
-    div#store-form Add a product to the Store
-      form(action="/admin/addProduct" method="post" enctype="multipart/form-data")
-        label Product Name
-          input(type="text" name="name" required)
-        label Price (As pennies $12.51 -> 1251)
-          input(type="number" name="price" placeholder="3998" required)
-        label Product Description
-          input(type="text" name="description" required)
-        label.upload Upload an image
-          input(type="file" name="uploadedFile" required)
-        label Alternate Text (image description for accessibility)
-          input(type="text" name="altText" required)
-        .buttons
+    .page
+      .primary 
+        h2 All Products in Store
+        if allProducts
+          each product in allProducts
+            .card
+              .image
+                img(src="img/uploads/" + product.filename alt= product.altText width="144px" height="144px")
+              .details
+                form(action="/admin/editProduct" method="post")
+                  Label NAME
+                    br
+                    input(type="text" name="name" value=product.name)
+                    br
+                  Label PRICE
+                    br
+                    input(type="number" name="price" value=product.price)
+                    br
+                  Label DESCRIPTION
+                    br
+                    input(type="text" name="description" value=product.description)
+                    br
+                  label ALT TEXT
+                    br
+                    input(type="text" name="altText" value=product.altText)
+                    br
+                  input(type="hidden" name="id" value=product._id)
+                  input(type="submit" value="Delete" formaction="/admin/deleteProduct")
+                  input(type="submit" value="Edit")
+        else
+          p No Products
+      .secondary 
+        h2 Add a product in the Store
+        form.create(action="/admin/addProduct" method="post" enctype="multipart/form-data")
+          label Upload an image
+            br
+            input(type="file" name="uploadedFile" required)
+            br
+          label Product Name
+            br
+            input(type="text" name="name" value="test tehc" required)
+            br
+          label Price (As pennies $12.51 -> 1251)
+            br
+            input(type="number" name="price" placeholder="3998" value="1337" required)
+            br
+          label Product Description
+            br
+            input(type="text" name="description" value="heckin' tehc" required)
+            br
+          label Alternate Text
+            br
+            input(type="text" name="altText" value="testing tehc" required)
+            br
           input(type="reset" value="Reset")
           input(type="submit" value="Submit")
-    #store-list
-      if allProducts
-        each product in allProducts
-          div
-            img(src="img/uploads/" + product.filename width="200px" height="200px" style="object-fit:cover;")
-            div
-              div= "Name: " + product.name
-              div= "Price: " + product.price
-              div= "Description: " + product.description
-              div= "Image filename: " + product.filename
-              div= "Image filesize: " + product.filesize
-              form.delete(action="/admin/deleteProduct" method="post")
-                input(type="hidden" name="id" value=product._id)
-                input(type="submit" value="Delete")
-      else
-        p No Products
-    div#gallery-form Add an image to the Gallery
-      form(action="/admin/addArt" method="post" enctype="multipart/form-data")
-        label Title
-          input(type="text" name="title" required)
-        label.upload Upload an image
-          input(type="file" name="uploadedFile" required)
-        label Alternate Text
-          input(type="text" name="altText" required)
-        .buttons
-          input(type="reset" value="Reset")
-          input(type="submit" value="Submit")
-    #gallery-list
-      if allArt
-        each art in allArt
-          div
-            img(src="img/uploads/" + art.filename width="200px" height="200px" style="object-fit:cover;")
-            div
-              div= "Title: " + art.title
-              div= "File name: " + art.filename
-              div= "File size: " + art.filesize
-              div= "Alt text: " + art.altText
-              form(action="/admin/deleteArt" method="post")
+      .primary
+        h2 All art in the Gallery
+        if allArt
+          each art in allArt
+            .card
+              .image
+                img(src="img/uploads/" + art.filename alt=art.altText width="144px" height="144px")
+              .details
+                form(action="/admin/editArt" method="post")
+                label TITLE
+                  br
+                  input(type="text" name="title" value=art.title)
+                  br
+                label ALT TEXT
+                  br
+                  input(type="text" name="title" value=art.altText)
+                  br
                 input(type="hidden" name="id" value=art._id)
-                input(type="submit" value="Delete")
-      else
-        p No Art
+                input(type="submit" value="Delete" formaction="/admin/deleteArt")
+                input(type="submit" value="Edit")
+        else
+          p No Art
+      .secondary
+        h2 Add art to the Gallery
+        form.create(action="/admin/addArt" method="post" enctype="multipart/form-data")
+          label UPLOAD AN IMAGE
+            br
+            input(type="file" name="uploadedFile" required)
+            br
+          label TITLE
+            br
+            input(type="text" name="title" value="tehc test" required)
+            br
+          label ALT TEXT
+            br
+            input(type="text" name="altText" value="testing the tehcs" required)
+            br
+          input(type="reset" value="Reset")
+          input(type="submit" value="Submit")
