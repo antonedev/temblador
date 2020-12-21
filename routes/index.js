@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   Gallery.getSomeArt(6, (err, art) => {
     if (err) res.json(err);
     else
-      Store.getSomeProducts(6, (err, products) => {
+      Store.getSomeProducts(4, (err, products) => {
         if (err) res.json(err);
         else res.render("index", { art, products });
       });

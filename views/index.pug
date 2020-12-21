@@ -4,91 +4,91 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet" href="index.css")
+    link(rel="icon" href="favicon.svg" type="image/svg+xml")
+    link(rel="preconnect" href="https://fonts.gstatic.com")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&family=Domine&display=swap")
     script(src="index.js" defer)
     title Temblador - Pyrography & Woodworking
   body
-    page
-      sidebar
-        logo
-          img(src="img/pyro-logo.svg" alt="Temblador Pyrography Logo")
-          company TEMBLADOR
-        nav
-          a(href="#store") STORE
-          a(href="#gallery") GALLERY
-          a(href="#services") SERVICES
-          a(href="#about") ABOUT
-          a(href="#order") ORDER
-      content
-        main
-          h2 Pyrography & Woodworking
-          #store
-            h3 Store
-            div
-              if products
-                each product in products
-                  a(href="/product/" + product._id)
-                    img(src="/img/uploads/" + product.filename alt=product.altText)
-                    div
-                      div=product.name
-                      div=product.price
-                    p=product.description
-              else
-                p No Products
-          #gallery
-            h3 Gallery
-            div
-              if art
-                each arte in art
-                  img(src="/img/uploads/" + arte.filename, alt=arte.caption onclick="openGallery(this)")
-          #modal(onclick="this.style.display='none'")
-            span &times;
-            img#modal-img
-          #services
-            h3 Services
-            p On-base percentage leadoff swing cellar warning track bandbox save stance. Bush league home cup of coffee pinch runner ground rule double blue practice bunt. Knuckle pennant outfield practice appeal, appeal batter's box loogy relief pitcher. Take practice baseball card rope skipper outside outfield. Stadium second base assist pinch runner hitter streak relief pitcher shortstop left fielder. Season friendly confines petey ground ball appeal season baseball.
-            p.spacer Wild pitch at-bat grounder backstop balk, rope loogy mustard game. Gapper in the hole backstop grass reds blue fair small ball pinch runner. Sacrifice pennant baseball alley red sox outfield swing. Sacrifice bunt cardinals cup of coffee play knuckleball bat rainout bench. Off-speed batting average reds grand slam mound loss bleeder. Double switch knuckleball diamond balk grounder pitchout good eye shift.
-          #about
-            h3 About
-            div
-              figure
-                p Ralph Temblador is a Disabled American Veteran who, while serving in the United States Army, was deployed in support of Operation Desert Shield, Desert Falcon, and Southern Watch.
-                figcaption PFC Temblador with fellow soldiers
-                img(src="img/author2.webp")
-              figure
-                p He's earned an A.A. in Multimedia and Broadcast Production, and a B.A. in Visual Effects and Motion Graphics. Ralph's love for art has spilled into to teaching the developmentally disabled as well.
-                figcaption Ralph smiling in a wheelchar at a museum
-                img(src="img/author1.webp")
-              figure
-                p In 2017, after a decade of symptoms, Ralph was diagnosed with Hereditary Spastic Paraplegia. Since then he has found pyrography and woodworking to be a great source of therapy.
-                figcaption Ralph practicing pyrography outside in AZ
-                img(src="img/author3.webp")
-            iframe(width="560" height="315" src="https://www.youtube-nocookie.com/embed/QfKILInWy_c" frameborder="0")
-          #ordering
-            h3 Order
-            p Commision an original piece of pyrographic art or order custom wood products.
-            form(action="/order" method="post")
-              label Name
-                input(type="text" name="name" required)
-              label Email
-                input(type="email" name="email" required)
-              label Product
-                select(name="product" required)
-                  option(value="Bad antone, it's broken" selected disabled hidden) Select Product
-                  option(value="large") Large wood art
-                  option(value="medium") Medium wood art
-                  option(value="small") Small wood art
-                  option(value="coasters") Wood drink coasters
-                  option(value="other") Other - please describe below
-              label Upload a file
-                input(type="file" name="file")
-              label Additional details
-                textarea(name="details" cols="20" rows="5")
-              div
-                input(type="reset")
-                input(type="submit" disabled)
-        footer
-          #copy
-            p &#169; 2020 Ralph Temblador
-          #author
-            p Website by 
-              a(href="https://antone.dev") antone.dev
+    header
+      h1 TEMBLADOR
+      nav
+        ul
+          li
+            a.js-no-history(href="#store") STORE
+          li
+            a.js-no-history(href="#order") ORDER
+          li
+            a.js-no-history(href="#gallery") GALLERY
+          li
+            a.js-no-history(href="#about") ABOUT
+    main
+      h2 Pyrography & Woodworking
+      section#store
+        h3 Store
+        ul
+          if products
+            each product in products
+              li
+                a(href="/product/" + product._id)
+                  img(src="/img/uploads/" + product.filename alt=product.altText width="200px" height="200px")
+                  div=product.name
+                  div="$"+product.price/100
+                  img(src="/img/search.svg" alt="More about this product")
+          else
+            p No Products
+        a(href="/product/") See more...
+      section#order
+        h3 Order
+        p Commision an original piece of pyrographic art or order custom wood products.
+        form(action="/order" method="post")
+          label Name
+            input(type="text" name="name" required)
+          label Email
+            input(type="email" name="email" required)
+          label Product
+            select(name="product" required)
+              option(value="" selected disabled hidden) Select Product
+              option(value="large") Large wood art
+              option(value="medium") Medium wood art
+              option(value="small") Small wood art
+              option(value="coasters") Wood drink coasters
+              option(value="other") Other - please describe below
+          label Upload a file
+            input(type="file" name="file")
+          label Additional details
+            textarea(name="details" cols="20" rows="5")
+          div
+            input(type="reset")
+            input(type="submit")
+      div#js-modal
+        span click anywhere to close
+        img#js-modal-img
+      section#gallery
+        h3 Gallery
+        ul
+          if art
+            each arte in art
+              li
+                img(src="/img/uploads/" + arte.filename, alt=arte.caption onclick="openGallery(this)" width="200px" height="200px")
+      section#about
+        h3 About
+        div
+          figure
+            p Ralph Temblador is a Disabled American Veteran who, while serving in the United States Army, was deployed in support of Operation Desert Shield, Desert Falcon, and Southern Watch.
+            img(src="img/author2.webp")
+            figcaption PFC Temblador with fellow soldiers
+          figure
+            p He's earned an A.A. in Multimedia and Broadcast Production, and a B.A. in Visual Effects and Motion Graphics. Ralph's love for art has spilled into to teaching the developmentally disabled as well.
+            img(src="img/author1.webp")
+            figcaption Ralph smiling in a wheelchar at a museum
+          figure
+            p In 2017, after a decade of symptoms, Ralph was diagnosed with Hereditary Spastic Paraplegia. Since then he has found pyrography and woodworking to be a great source of therapy.
+            img(src="img/author3.webp")
+            figcaption Ralph burning wood outside in AZ
+      footer
+        div
+          p &#169; 2020 Ralph Temblador
+        div
+          p Website by 
+            a(href="https://antone.dev") antone.dev
